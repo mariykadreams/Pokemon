@@ -15,7 +15,6 @@ h1 {
     margin-bottom: -10px;
 }
 
-
 .navbar {
     background: #ffffff;
     padding: 15px;
@@ -69,13 +68,12 @@ h1 {
     border-radius: 8px;
 }
 
-
 .home-links {
     margin-top: 20px;
 }
 
 .external-link {
-    color: #ffcb05; 
+    color: #ffd735; 
     font-weight: bold;
     text-decoration: none;
 }
