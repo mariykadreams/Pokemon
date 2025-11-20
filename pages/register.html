@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -13,30 +13,41 @@
             <a href="../index.html">Home</a>
             <a href="quiz.html">Quiz</a>
             <a href="game.html">Find</a>
-            <a href="login.html" class="active">Login</a>
+            <a href="login.html">Login</a>
         </nav>
     </header>
 
     <div class="home-box">
-        <h1>Login</h1>
+        <h1>Register</h1>
         <input type="text" id="username" placeholder="Username"><br><br>
         <input type="password" id="password" placeholder="Password"><br><br>
-        <button class="btn" onclick="login()">Login</button>
+        <button class="btn" onclick="register()">Register</button>
         <p id="message"></p>
 
-        <p>Don't have an account? <a href="register.html" class="external-link">Register here</a></p>
+        <p>Already have an account? <a href="login.html" class="external-link">Login here</a></p>
     </div>
 
 <script>
-async function login() {
+async function register() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const res = await fetch('/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    });
+    app.post('/register', (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const users = readUsers();
+    if (users.find(u => u.username === username)) {
+      return res.status(400).json({ message: 'Username already exists' });
+    }
+    users.push({ username, password });
+    saveUsers(users);
+    res.json({ message: 'Registration successful' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 
     const data = await res.json();
     document.getElementById('message').innerText = data.message;
