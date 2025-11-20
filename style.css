@@ -85,12 +85,14 @@ h1 {
 
 .btn {
     display: block;
+    height: 20px;
     background: #ffd735;
     color: #444; 
     text-decoration: none;
     padding: 12px;
     margin: 10px 0;
     border-radius: 6px;
+    font-size: 16px;
     font-weight: bold;
     transition: background 0.3s;
 }
