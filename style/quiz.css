@@ -17,20 +17,6 @@
     margin-bottom: 20px;
 }
 
-.options button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 6px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    background: #ffd735;
-    color: #444;
-    transition: background 0.3s;
-}
-
 .options button:hover {
     background: #f5b700;
 }

@@ -82,7 +82,6 @@ h1 {
     text-decoration: underline;
 }
 
-
 .btn {
     display: block;
     height: 20px;
@@ -97,13 +96,44 @@ h1 {
     transition: background 0.3s;
 }
 
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background: #ffd735;
+    color: #444;
+    transition: background 0.3s;
+}
+
 .btn:hover {
     background: #f5b700; 
 }
-
 
 .logo {
     height: 20px;
     vertical-align: middle;
 }
 
+.home-box input[type="text"],
+.home-box input[type="password"] {
+    width: 100%;
+    box-sizing: border-box; 
+    padding: 10px 15px;
+    margin: 10px 0; 
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.home-box input[type="text"]:focus,
+.home-box input[type="password"]:focus {
+    border-color: #ffd735; 
+    box-shadow: 0 0 5px rgba(255, 215, 53, 0.5);
+}
