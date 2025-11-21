@@ -108,7 +108,28 @@ h1 {
     cursor: pointer;
 }
 
+#pokeball-opening {
+    display: none;
+    position: absolute;
+    z-index: 2000;
+    width: 80px;
+    height: 80px;
+    top: 80vh;
+    left: calc(50vw - 40px)
+}
+
 .logo {
     height: 20px;
     vertical-align: middle;
+}
+
+@keyframes curve {
+    0%   { transform: translate(0, 0); }
+    40%  { transform: translate(var(--cx), var(--cy)); } /* curve bump */
+    100% { transform: translate(var(--ex), var(--ey)); }
+}
+
+#timer-and-score {
+    position: absolute;
+    z-index: 2000;
 }

@@ -1,6 +1,7 @@
 const gameMenu = document.getElementById("game-menu")
 const gameContainer = document.getElementById("game")
 const startGameButton = document.getElementById("start-game-button")
+const pokeballOpening = document.getElementById("pokeball-opening")
 
 const GAME_DURATION = 25;
 const NUM_TRAINERS = 401;
@@ -30,9 +31,11 @@ startGameButton.onclick = () => {
 
 
 function startGame() {
-    gameMenu.style.display = "none"
-    // TODO
+    setImageVisibility(gameMenu, false)
     startRound()
+    setTimeout(() => {
+        endGame()
+    }, 30000)
 }
 
 
@@ -46,7 +49,7 @@ function startRound() {
     loadImages(imageNodes, srcs, () => {
         for (let i = 0; i < NUM_DISPLAYED; i++) {
             setImageVisibility(imageNodes[i], true)
-            setImageRandomPosition(imageNodes[i])
+            animateCurveMove(imageNodes[i])
         }
     })
 }
@@ -64,7 +67,7 @@ function createElements(elements, n) {
     setImageAttributes(pok)
     pok.style.zIndex = 1000
     pok.onclick = () => {
-        pokemonFound(elements)
+        pokemonFound()
     }
     gameContainer.appendChild(pok)
     elements.push(pok)
@@ -80,21 +83,24 @@ function setImageAttributes(img) {
 }
 
 
-function setImageRandomPosition(img) {
+function generateRandomPosition() {
     let top = Math.floor(
         Math.random() * (window.innerHeight - SAFE_MARGIN - IMG_SIZE)
     ) + SAFE_MARGIN
     let left = Math.floor(
         Math.random() * (window.innerWidth - SAFE_MARGIN - IMG_SIZE)
     ) + SAFE_MARGIN
-    img.style.top = `${top}px`
-    img.style.left = `${left}px`
+    return {
+        top,
+        left
+    }
 }
 
 
-function setImageStartPosition(img) {
-    img.style.top = `${(window.innerHeight * 80)/100}px`
-    img.style.left = `${window.innerWidth/2 - IMG_SIZE/2}px`
+function setImageRandomPosition(img) {
+    position = generateRandomPosition()
+    img.style.top = `${position.top}px`
+    img.style.left = `${position.left}px`
 }
 
 
@@ -115,12 +121,49 @@ function setImageVisibility(img, visible) {
 }
 
 
-function pokemonFound(elements) {
-    gameMenu.style.display = "block"
-    for (let i = 0; i < elements.length; i++) {
-        setImageVisibility(elements[i], false)
-        setImageStartPosition(elements[i])
+function animateCurveMove(img) {
+    setImageVisibility(pokeballOpening, true)
+
+    const oldTop = (window.innerHeight * 80)/100
+    const oldLeft = window.innerWidth/2 - IMG_SIZE/2
+    img.style.top = `${oldTop}px`
+    img.style.left = `${oldLeft}px`
+
+    let position = generateRandomPosition()
+    const newTop = position.top
+    const newLeft = position.left
+
+    const dx = newLeft - oldLeft;
+    const dy = newTop - oldTop;
+
+    const cx = dx * 0.5 + (-dy * 0.3);
+    // const cy = dy * 0.5 + ( dx * 0.3);
+    // const cx = 0
+    const cy = -window.innerHeight * 0.3 + dx * dx * 0.0005 - 300 * Math.random() 
+
+    img.style.setProperty("--cx", `${cx}px`);
+    img.style.setProperty("--cy", `${cy}px`);
+    img.style.setProperty("--ex", `${dx}px`);
+    img.style.setProperty("--ey", `${dy}px`);
+
+    img.style.animation = "none";
+    void img.offsetWidth;
+    img.style.animation = "curve 1s linear forwards";
+
+    img.onanimationend = () => {
+        img.style.animation = "none";
+        img.style.left = `${newLeft}px`;
+        img.style.top = `${newTop}px`;
+        setImageVisibility(pokeballOpening, false)
+    };
+}
+
+
+function pokemonFound() {
+    for (let i = 0; i < imageNodes.length; i++) {
+        setImageVisibility(imageNodes[i], false)
     }
+    startRound()
 }
 
 
@@ -130,4 +173,12 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+}
+
+function endGame() {
+    for (let i = 0; i < imageNodes.length; i++) {
+        setImageVisibility(imageNodes[i], false)
+    }
+    setImageVisibility(pokeballOpening, false)
+    setImageVisibility(gameMenu, true)
 }
