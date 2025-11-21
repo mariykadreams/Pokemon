@@ -1,6 +1,7 @@
 [
   {
-    "username": "12341234",
-    "password": "12341234"
-  }
+    "username": "ashketchum", "password": "pikachu"},
+  { "username": "misty", "password": "starmie" },
+  { "username": "brock", "password": "onix" },
+  { "username": "12341234", "password": "12341234" }
 ]
