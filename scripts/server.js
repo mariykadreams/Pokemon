@@ -7,7 +7,7 @@ const PORT = 3000;
 app.use(bodyParser.json());
 app.use(express.static('.')); // serve HTML, CSS, JS files
 
-const USERS_FILE = './users.json';
+const USERS_FILE = './scripts/users.json';
 
 // Helper to read users
 function readUsers() {
@@ -21,19 +21,25 @@ function saveUsers(users) {
 }
 
 // Registration endpoint
+// Registration endpoint
 app.post('/register', (req, res) => {
-    const { username, password } = req.body;
-    const users = readUsers();
+    try {
+        const { username, password } = req.body;
+        const users = readUsers();
 
-    if (users.find(u => u.username === username)) {
-        return res.status(400).json({ message: 'Username already exists' });
+        if (users.find(u => u.username === username)) {
+            // Use 409 Conflict or 400 Bad Request for existing user
+            return res.status(409).json({ message: 'Username already exists' });
+        }
+
+        users.push({ username, password }); // **Reminder: In a real app, hash the password!**
+        saveUsers(users);
+        res.status(201).json({ message: 'Registration successful' }); // Use 201 Created
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
     }
-
-    users.push({ username, password }); // store password as plain text (for demo only)
-    saveUsers(users);
-    res.json({ message: 'Registration successful' });
 });
-
 // Login endpoint
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
