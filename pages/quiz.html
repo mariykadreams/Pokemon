@@ -29,7 +29,7 @@
 
             <p><b>Gameplay Concept:</b></p>
 
-            <p><b>Silhouette Display:</b> The game will show a dark silhouette of a Pokémon. Only the shape is visible—no colors or details.</p>
+            <p><b>Silhouette Display:</b> The game will show a dark  <a href="https://bulbapedia.bulbagarden.net/wiki/Who%27s_That_Pok%C3%A9mon%3F" target="_blank" class="external-link">silhouette of a Pokémon</a>. Only the shape is visible—no colors or details.</p>
 
             <p><b>Guessing:</b> You need to type the name of the Pokémon you think is hidden. You can guess in English or other supported languages.</p>
 
@@ -50,7 +50,7 @@
      </section>
 
     <section class="quiz-box">
-        <img id="pokemon-image" src="../images/mystery_1.jpg" alt="Mystery Pokémon">
+        <img id="pokemon-image" src="../images/pikachu_who_0.png" alt="Mystery Pokémon">
         <h1>Who's that Pokémon?</h1>
         <div class="options">
             <button onclick="checkAnswer('Pikachu')">Pikachu</button>
@@ -59,27 +59,44 @@
             <button onclick="checkAnswer('Squirtle')">Squirtle</button>
         </div>
         <div class="result" id="result"></div>
+        <button id="try-again-btn" onclick="resetQuiz()" style="display:none;">Try Again</button>
+
     </section>
 
     <script>
-        const correctPokemon = 'Pikachu';
-        const realImage = '../images/pikachu.png';
+    const correctPokemon = 'Pikachu';
+    const realImage = '../images/pikachu_who_1.png';
+    const silhouetteImage = '../images/pikachu_who_0.png';
 
-        function checkAnswer(selected) {
-            const resultDiv = document.getElementById('result');
-            const image = document.getElementById('pokemon-image');
+    function checkAnswer(selected) {
+        const resultDiv = document.getElementById('result');
+        const image = document.getElementById('pokemon-image');
+        const tryAgainBtn = document.getElementById('try-again-btn');
 
-            image.src = realImage;
+        image.src = realImage;
 
-            if (selected === correctPokemon) {
-                resultDiv.textContent = 'Correct! 🎉';
-                resultDiv.style.color = 'green';
-            } else {
-                resultDiv.textContent = `Wrong! It was ${correctPokemon}.`;
-                resultDiv.style.color = 'red';
-            }
+        if (selected === correctPokemon) {
+            resultDiv.textContent = 'Correct! 🎉';
+            resultDiv.style.color = 'green';
+        } else {
+            resultDiv.textContent = `Wrong! It was ${correctPokemon}.`;
+            resultDiv.style.color = 'red';
         }
-    </script>
+
+        tryAgainBtn.style.display = 'block';
+    }
+
+    function resetQuiz() {
+        const resultDiv = document.getElementById('result');
+        const image = document.getElementById('pokemon-image');
+        const tryAgainBtn = document.getElementById('try-again-btn');
+
+        image.src = silhouetteImage;
+        resultDiv.textContent = '';
+        tryAgainBtn.style.display = 'none';
+    }
+</script>
+
     
 </body>
 </html>
