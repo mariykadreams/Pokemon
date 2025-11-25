@@ -4,6 +4,11 @@ const startGameButton = document.getElementById("start-game-button")
 const pokeballOpening = document.getElementById("pokeball-opening")
 const timerDiv = document.getElementById("timer")
 const scoreDiv = document.getElementById("score")
+const gameInstructions = document.querySelector(".game-instructions")
+const gameLinks = document.querySelector(".game-links")
+const gameEnded = document.getElementById("game-ended")
+const finalScoreMessage = document.getElementById("final-score-message")
+const backToMenuButton = document.getElementById("back-to-menu-button")
 
 const GAME_DURATION = 20 * 1000 // milliseconds
 let startTime = null
@@ -31,9 +36,10 @@ for (let i = 0; i < NUM_POKEMONS; i++) {
 createElements()
 
 
-startGameButton.onclick = () => {
-    startGame()
-}
+startGameButton.onclick = startGame
+
+
+backToMenuButton.onclick = showGameMenu
 
 
 function startGame() {
@@ -70,6 +76,7 @@ function updateCountdown(timestamp) {
 function startRound() {
     START_POSITION_TOP = (window.innerHeight * 80)/100
     START_POSITION_LEFT = window.innerWidth/2 - IMG_SIZE/2
+
     shuffle(trainerImages)
     const pokemon = pokemonImages[Math.floor(Math.random() * NUM_POKEMONS)]
 
@@ -103,7 +110,23 @@ function endGame() {
     setImageVisibility(pokeballOpening, false)
     setImageVisibility(timerDiv, false)
     setImageVisibility(scoreDiv, false)
+    showEndScreen()
+}
+
+
+function showEndScreen() {
     setImageVisibility(gameMenu, true)
+    setImageVisibility(gameInstructions, false)
+    setImageVisibility(gameLinks, false)
+    finalScoreMessage.innerHTML = `Game Over! Your final score is: ${score}`
+    setImageVisibility(gameEnded, true)
+}
+
+
+function showGameMenu() {
+    setImageVisibility(gameInstructions, true)
+    setImageVisibility(gameLinks, true)
+    setImageVisibility(gameEnded, false)
 }
 
 

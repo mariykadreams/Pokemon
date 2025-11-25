@@ -139,9 +139,17 @@ h1 {
     left: calc(99vw - 120px);
     z-index: 2000;
 }
- #timer-and-score * {
+#timer-and-score * {
     display: none;
     line-height: 1.3;
     color: #f5b700;
     text-shadow: 1px 1px #444;
- }
+}
+
+#game-ended {
+    display: none;
+}
+
+#final-score-message {
+    font-size: 20px;
+}
