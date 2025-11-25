@@ -1,7 +1,6 @@
 [
-  {
-    "username": "ashketchum", "password": "pikachu"},
-  { "username": "misty", "password": "starmie" },
-  { "username": "brock", "password": "onix" },
-  { "username": "12341234", "password": "12341234" }
+  { "username": "ashketchum", "password": "PikachU1!", "score": 15 },
+  { "username": "misty", "password": "StarmiE1!", "score": 12 },
+  { "username": "brock", "password": "OniX1!@#", "score": 9 },
+  { "username": "12341234", "password": "PokEmon1!", "score": 8 }
 ]

@@ -3,10 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Leaderboards</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style/leaderboards.css">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid?styles=24573" rel="stylesheet">
 </head>
 <body>
-    
+    <header class="navbar">
+        <nav>
+            <img src="../images/pokemon_logo.svg" alt="Logo" class="logo">
+
+            <a href="../index.html">Home</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="game.html">Find</a>
+            <a href="leaderboards.html" class="active">Leaderboards</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="home-box">
+        <h1>Leaderboards</h1>
+        <div id="leaderboard-container">
+            <table id="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="../scripts/leaderboards.js"></script>
 </body>
 </html>
-
