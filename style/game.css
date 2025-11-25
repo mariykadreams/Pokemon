@@ -130,6 +130,17 @@ h1 {
 }
 
 #timer-and-score {
+    font-family: 'Pokemon Solid', sans-serif;
+    letter-spacing: 3px;
+    width: 120px;
+    display: block;
     position: absolute;
+    left: calc(99vw - 120px);
     z-index: 2000;
 }
+ #timer-and-score * {
+    display: none;
+    line-height: 1.3;
+    color: #f5b700;
+    text-shadow: 1px 1px #444;
+ }

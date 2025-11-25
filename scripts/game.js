@@ -2,18 +2,20 @@ const gameMenu = document.getElementById("game-menu")
 const gameContainer = document.getElementById("game")
 const startGameButton = document.getElementById("start-game-button")
 const pokeballOpening = document.getElementById("pokeball-opening")
-const timer = document.getElementById("timer")
+const timerDiv = document.getElementById("timer")
+const scoreDiv = document.getElementById("score")
 
 const GAME_DURATION = 20 * 1000 // milliseconds
 let startTime = null
+let score = 0
 const NUM_TRAINERS = 401
 const NUM_POKEMONS = 401
 const NUM_DISPLAYED = 300
 
 const IMG_SIZE = 70
 const SAFE_MARGIN = 70
-const START_POSITION_TOP = (window.innerHeight * 80)/100
-const START_POSITION_LEFT = window.innerWidth/2 - IMG_SIZE/2
+let START_POSITION_TOP = null
+let START_POSITION_LEFT = null
 
 const trainerImages = []
 const pokemonImages = []
@@ -26,7 +28,7 @@ for (let i = 0; i < NUM_TRAINERS; i++) {
 for (let i = 0; i < NUM_POKEMONS; i++) {
     pokemonImages.push("../images/pokemon_svg/" + i + ".svg")
 }
-createElements(imageNodes, NUM_DISPLAYED)
+createElements()
 
 
 startGameButton.onclick = () => {
@@ -35,8 +37,11 @@ startGameButton.onclick = () => {
 
 
 function startGame() {
+    score = 0
+    scoreDiv.innerHTML = `Score: ${score}`
     setImageVisibility(gameMenu, false)
-    setImageVisibility(timer, true)
+    setImageVisibility(timerDiv, true)
+    setImageVisibility(scoreDiv, true)
     startRound()
     startCountdown()
 }
@@ -53,7 +58,7 @@ function updateCountdown(timestamp) {
     const elapsed = timestamp - startTime
     const remaining = Math.max(0, GAME_DURATION - elapsed)
 
-    document.getElementById("timer").innerHTML = Math.round(remaining / 100) / 10
+    document.getElementById("timer").innerHTML = `Time: ${Math.round(remaining / 100) / 10}`
 
     if (remaining > 0) {
         requestAnimationFrame(updateCountdown)
@@ -63,6 +68,8 @@ function updateCountdown(timestamp) {
 }
 
 function startRound() {
+    START_POSITION_TOP = (window.innerHeight * 80)/100
+    START_POSITION_LEFT = window.innerWidth/2 - IMG_SIZE/2
     shuffle(trainerImages)
     const pokemon = pokemonImages[Math.floor(Math.random() * NUM_POKEMONS)]
 
@@ -79,32 +86,36 @@ function startRound() {
 }
 
 
+function pokemonFound() {
+    for (let i = 0; i < imageNodes.length; i++) {
+        setImageVisibility(imageNodes[i], false)
+    }
+    score++
+    scoreDiv.innerHTML = `Score: ${score}`
+    startRound()
+}
+
+
 function endGame() {
     for (let i = 0; i < imageNodes.length; i++) {
         setImageVisibility(imageNodes[i], false)
     }
     setImageVisibility(pokeballOpening, false)
-    setImageVisibility(timer, false)
+    setImageVisibility(timerDiv, false)
+    setImageVisibility(scoreDiv, false)
     setImageVisibility(gameMenu, true)
 }
 
 
-function createElements(elements, n) {
-    for (let i = 0; i < n - 1; i++) {
+function createElements() {
+    for (let i = 0; i < NUM_DISPLAYED; i++) {
         let trainer = document.createElement("img")
         setImageAttributes(trainer)
         gameContainer.appendChild(trainer)
-        elements.push(trainer)
+        imageNodes.push(trainer)
     }
-
-    let pok = document.createElement("img")
-    setImageAttributes(pok)
-    pok.style.zIndex = 1000
-    pok.onclick = () => {
-        pokemonFound()
-    }
-    gameContainer.appendChild(pok)
-    elements.push(pok)
+    imageNodes[NUM_DISPLAYED - 1].style.zIndex = 1000 // the pokemon
+    imageNodes[NUM_DISPLAYED - 1].onclick = pokemonFound
 }
 
 
@@ -113,14 +124,13 @@ function setImageAttributes(img) {
     img.height = IMG_SIZE
     img.style.position = "absolute"
     setImageVisibility(img, false)
-    setImageRandomPosition(img)
 }
 
 
 function generateRandomPosition() {
     let top = Math.floor(
         Math.random() * (window.innerHeight - SAFE_MARGIN * 2 - IMG_SIZE)
-    ) + SAFE_MARGIN
+    ) + SAFE_MARGIN + 30
     let left = Math.floor(
         Math.random() * (window.innerWidth - SAFE_MARGIN * 2 - IMG_SIZE)
     ) + SAFE_MARGIN
@@ -187,18 +197,10 @@ function animateCurveMove(img) {
 }
 
 
-function pokemonFound() {
-    for (let i = 0; i < imageNodes.length; i++) {
-        setImageVisibility(imageNodes[i], false)
-    }
-    startRound()
-}
-
-
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
+        const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]]
     }
-    return array
+    return array;
 }
