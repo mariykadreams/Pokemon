@@ -6,8 +6,7 @@
     <title>Quiz</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../style/quiz.css">
-    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
-
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid?styles=24573" rel="stylesheet">
 </head>
 <body>
      <header class="navbar">
@@ -19,7 +18,7 @@
         <img src="../images/pokemon_logo.svg" alt="Logo" class="logo">
         <nav id="site-menu">
             <a href="../index.html">Home</a>
-            <a href="" class="active" >Quiz</a>
+            <a href="" class="active">Quiz</a>
             <a href="game.html">Find</a>
             <a href="leaderboards.html">Leaderboard</a>
             <a href="about.html">About</a>
@@ -27,84 +26,54 @@
         </nav>
     </header>
 
-    <section class="home-box" >
+    <section id="game-menu" class="home-box">
            <h1>Quiz Instructions</h1>
 
             <p><b>Objective:</b> Guess the Pokémon hidden in the silhouette before time runs out!</p>
 
             <ul>
                 <li><b>Silhouette:</b> A dark <a href="https://bulbapedia.bulbagarden.net/wiki/Who%27s_That_Pok%C3%A9mon%3F" target="_blank" class="external-link">Pokémon outline</a> is shown—no colors or details.</li>
-
-                <li><b>Guessing:</b> Type the Pokémon’s name (English or other supported languages).</li>
-
+                <li><b>Guessing:</b> Type the Pokémon's name (English or other supported languages).</li>
                 <li><b>Hints:</b> Some versions may give hints like type or first letter.</li>
-
-                <li><b>Scoring:</b> Correct answers give points; wrong guesses may give none.</li>
-
-                <li><b>Next Round:</b> After each guess, the full-color Pokémon is revealed, then the next silhouette appears.</li>
-
-                <li><b>Goal:</b> Guess as many Pokémon as possible!</li>
+                <li><b>Scoring:</b> Correct answers give 10 points; 5 bonus points for logged-in users.</li>
+                <li><b>Timer:</b> You have 60 seconds to answer as many questions as possible.</li>
+                <li><b>Goal:</b> Guess as many Pokémon as possible before time runs out!</li>
             </ul>
 
             <p><b>Tips:</b></p>
             <ul>
                 <li>Focus on the shape—many Pokémon have unique outlines.</li>
                 <li>Types and evolutions can help you narrow down possibilities.</li>
-                <li>The more you play, the faster you’ll recognize them!</li>
+                <li>The more you play, the faster you'll recognize them!</li>
             </ul>
 
-     </section>
+            <div class="home-links" id="game-links">
+                <button id="start-quiz-button" class="menu-btn">Start Quiz</button>
+            </div>
 
-    <section class="quiz-box">
+            <div id="game-ended" style="display:none;">
+                <p id="final-score-message"></p>
+                <button id="back-to-menu-button" class="menu-btn">Back</button>
+            </div>
+    </section>
+
+    <div id="timer-and-score">
+        <div id="timer">Time: 60s</div>
+        <div id="score">Score: 0</div>
+        <div id="question-counter">Question 1/10</div>
+    </div>
+
+    <section id="quiz-container" class="quiz-box" style="display:none;">
         <img id="pokemon-image" src="../images/pikachu_who_0.png" alt="Mystery Pokémon">
         <h1>Who's that Pokémon?</h1>
         <div class="options">
-            <button onclick="checkAnswer('Pikachu')">Pikachu</button>
-            <button onclick="checkAnswer('Bulbasaur')">Bulbasaur</button>
-            <button onclick="checkAnswer('Charmander')">Charmander</button>
-            <button onclick="checkAnswer('Squirtle')">Squirtle</button>
+            <button>Loading...</button>
         </div>
         <div class="result" id="result"></div>
-        <button id="try-again-btn" onclick="resetQuiz()" style="display:none;">Try Again</button>
-
+        <button id="next-question-button" class="menu-btn" style="display:none;">Next Question</button>
     </section>
 
     <script src="../scripts/nav.js"></script>
-    <script>
-    const correctPokemon = 'Pikachu';
-    const realImage = '../images/pikachu_who_1.png';
-    const silhouetteImage = '../images/pikachu_who_0.png';
-
-    function checkAnswer(selected) {
-        const resultDiv = document.getElementById('result');
-        const image = document.getElementById('pokemon-image');
-        const tryAgainBtn = document.getElementById('try-again-btn');
-
-        image.src = realImage;
-
-        if (selected === correctPokemon) {
-            resultDiv.textContent = 'Correct! 🎉';
-            resultDiv.style.color = 'green';
-        } else {
-            resultDiv.textContent = `Wrong! It was ${correctPokemon}.`;
-            resultDiv.style.color = 'red';
-        }
-
-        tryAgainBtn.style.display = 'block';
-    }
-
-    function resetQuiz() {
-        const resultDiv = document.getElementById('result');
-        const image = document.getElementById('pokemon-image');
-        const tryAgainBtn = document.getElementById('try-again-btn');
-
-        image.src = silhouetteImage;
-        resultDiv.textContent = '';
-        tryAgainBtn.style.display = 'none';
-    }
-</script>
-
-    
+    <script src="../scripts/quiz.js"></script>
 </body>
 </html>
-
