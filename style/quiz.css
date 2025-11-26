@@ -68,7 +68,7 @@
     display: none;
     position: absolute;
     right: 20px;
-    top: 100px;
+    top: 75px;
     z-index: 2000;
 }
 
@@ -116,6 +116,9 @@
 }
 
 .home-box ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
     list-style: none;
     padding-left: 0;   
     margin-left: 0;

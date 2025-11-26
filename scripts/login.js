@@ -34,7 +34,11 @@ async function loadRegisteredUsers() {
     }
 }
 
-async function handleLogin() {
+async function handleLogin(event) {
+    if (event) {
+        event.preventDefault();
+    }
+    
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const messageElement = document.getElementById('message');
@@ -76,11 +80,18 @@ async function handleLogin() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
     const loginButton = document.getElementById('loginButton');
     
-    if (loginButton) {
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLogin);
+    }
+    
+    if (loginButton && !loginForm) {
         loginButton.addEventListener('click', handleLogin);
-    } else {
-        console.error('Login button (id="loginButton") not found in the DOM.');
+    }
+    
+    if (!loginForm && !loginButton) {
+        console.error('Login form or button not found in the DOM.');
     }
 });

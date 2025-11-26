@@ -158,29 +158,15 @@ button {
     transform: translateY(-6px) rotate(-45deg);
 }
 
+.navbar > a {
+    text-decoration: none;
+    display: inline-block;
+}
+
 .logo {
     width: 30px;
     height: 30px;
     vertical-align: middle;
-}
-
-.home-box input[type="text"],
-.home-box input[type="password"] {
-    width: 100%;
-    box-sizing: border-box; 
-    padding: 10px 15px;
-    margin: 10px 0; 
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.home-box input[type="text"]:focus,
-.home-box input[type="password"]:focus {
-    border-color: #ffd735; 
-    box-shadow: 0 0 5px rgba(255, 215, 53, 0.5);
 }
 
 .site-footer {
@@ -203,6 +189,7 @@ button {
 }
 
 .site-footer div * {
+    font-size: 16px;
     text-align: center;
 }
 

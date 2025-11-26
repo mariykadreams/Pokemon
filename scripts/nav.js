@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.remove('sidebar-open')
     }
 
-    burger.addEventListener('click', function () {
+    burger.addEventListener('click', () => {
         const isOpen = nav.classList.toggle('open')
         burger.classList.toggle('open', isOpen)
         burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false')

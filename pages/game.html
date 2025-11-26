@@ -15,7 +15,9 @@
             <span></span>
             <span></span>
         </button>
-        <img src="../images/pokemon_logo.svg" alt="Logo" class="logo">
+        <a href="../index.html">
+            <img src="../images/pokemon_logo.svg" alt="Logo" class="logo">
+        </a>
         <nav id="site-menu">
             <a href="../index.html">Home</a>
             <a href="quiz.html">Quiz</a>
@@ -26,39 +28,43 @@
         </nav>
     </header>
 
-    <section id="game-menu" class="home-box">
-        <h1>Find That Pokémon</h1>
-        <div class="game-instructions">
-            <h3>Welcome to Find That Pokémon!</h3>
-            <p>
-                Your goal is to find the hidden pokémon among the trainers. <br>
-                You have 20 seconds, and for every pokémon that you find, you win one point. 
-            </p>
-        </div>
-        <div class="home-links" id="game-links">
-            <button id="start-game-button" class="menu-btn">Start Game</button>
-        </div>
-        <div id="game-ended">
-            <p id="final-score-message"></p>
-            <p>To learn more about pokémon, <a href="https://www.pokemon.com/us/pokedex" target="_blank" class="external-link">check out</a></p>
-            <button id="back-to-menu-button" class="menu-btn">Back</button>
-        </div>
-    </section>
+    <main>
+        <section id="game-menu" class="home-box">
+            <h1>Find That Pokémon</h1>
+            <div class="game-instructions">
+                <h3>Welcome to Find That Pokémon!</h3>
+                <p>
+                    Your goal is to find the hidden pokémon among the trainers. <br>
+                    You have 20 seconds, and for every pokémon that you find, you win one point. 
+                </p>
+            </div>
+            <div class="home-links" id="game-links">
+                <button id="start-game-button" class="menu-btn">Start Game</button>
+            </div>
+            <div id="game-ended">
+                <p id="final-score-message"></p>
+                <p>To learn more about pokémon, <a href="https://www.pokemon.com/us/pokedex" target="_blank" class="external-link">check out</a>.</p>
+                <button id="back-to-menu-button" class="menu-btn">Back</button>
+            </div>
+        </section>
 
-    <div id="timer-and-score">
-        <div id="timer">Time: 0</div>
-        <div id="score">Score: 0</div>
-    </div>
+        <section id="game-area" aria-label="Game area">
+            <div id="timer-and-score">
+                <div id="timer">Time: 0</div>
+                <div id="score">Score: 0</div>
+            </div>
 
-    <div id="game"></div>
+            <div id="game"></div>
 
-    <img src="../images/pokeball-opening.gif" id="pokeball-opening">
+            <img src="../images/pokeball-opening.gif" id="pokeball-opening" alt="">
+        </section>
+    </main>
 
     <footer class="site-footer">
         <img src="../images/footer/charmander.bmp" alt="Charmander">
         <div>
             <a href="about.html" class="external-link">About Us</a>
-            <p>&copy Copyright 2025 Group 37</p>
+            <small>&copy; Copyright 2025 Group 37</small>
         </div>
         <img src="../images/footer/mew.bmp" alt="Mew">
     </footer>

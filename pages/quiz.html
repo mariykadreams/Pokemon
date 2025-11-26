@@ -15,7 +15,9 @@
             <span></span>
             <span></span>
         </button>
-        <img src="../images/pokemon_logo.svg" alt="Logo" class="logo">
+        <a href="../index.html">
+            <img src="../images/pokemon_logo.svg" alt="Logo" class="logo">
+        </a>
         <nav id="site-menu">
             <a href="../index.html">Home</a>
             <a href="" class="active">Quiz</a>
@@ -26,16 +28,16 @@
         </nav>
     </header>
 
-    <section id="game-menu" class="home-box">
-           <h1>Quiz Instructions</h1>
+    <main>
+        <section id="game-menu" class="home-box">
+            <h1>Quiz Instructions</h1>
 
             <p><b>Objective:</b> Guess the Pokémon hidden in the silhouette before time runs out!</p>
 
             <ul>
                 <li><b>Silhouette:</b> A dark <a href="https://bulbapedia.bulbagarden.net/wiki/Who%27s_That_Pok%C3%A9mon%3F" target="_blank" class="external-link">Pokémon outline</a> is shown—no colors or details.</li>
-                <li><b>Guessing:</b> Type the Pokémon's name (English or other supported languages).</li>
-                <li><b>Hints:</b> Some versions may give hints like type or first letter.</li>
-                <li><b>Scoring:</b> Correct answers give 10 points; 5 bonus points for logged-in users.</li>
+                <li><b>Guessing:</b> Select the Pokémon's name.</li>
+                <li><b>Scoring:</b> Correct answers give 1 point.</li>
                 <li><b>Timer:</b> You have 60 seconds to answer as many questions as possible.</li>
                 <li><b>Goal:</b> Guess as many Pokémon as possible before time runs out!</li>
             </ul>
@@ -55,29 +57,32 @@
                 <p id="final-score-message"></p>
                 <button id="back-to-menu-button" class="menu-btn">Back</button>
             </div>
-    </section>
+        </section>
 
-    <div id="timer-and-score">
-        <div id="timer">Time: 60s</div>
-        <div id="score">Score: 0</div>
-        <div id="question-counter">Question 1/10</div>
-    </div>
+        <section id="quiz-area" aria-label="Quiz area">
+            <div id="timer-and-score">
+                <div id="timer">Time: 60s</div>
+                <div id="score">Score: 0</div>
+                <div id="question-counter">Question 1/10</div>
+            </div>
 
-    <section id="quiz-container" class="quiz-box" style="display:none;">
-        <img id="pokemon-image" src="../images/pikachu_who_0.png" alt="Mystery Pokémon">
-        <h1>Who's that Pokémon?</h1>
-        <div class="options">
-            <button>Loading...</button>
-        </div>
-        <div class="result" id="result"></div>
-        <button id="next-question-button" class="menu-btn" style="display:none;">Next Question</button>
-    </section>
+            <section id="quiz-container" class="quiz-box" style="display:none;">
+                <img id="pokemon-image" src="../images/pikachu_who_0.png" alt="Mystery Pokémon">
+                <h1>Who's that Pokémon?</h1>
+                <div class="options">
+                    <button>Loading...</button>
+                </div>
+                <div class="result" id="result"></div>
+                <button id="next-question-button" class="menu-btn" style="display:none;">Next Question</button>
+            </section>
+        </section>
+    </main>
 
     <footer class="site-footer">
         <img src="../images/footer/charmander.bmp" alt="Charmander">
         <div>
             <a href="about.html" class="external-link">About Us</a>
-            <p>&copy Copyright 2025 Group 37</p>
+            <small>&copy; Copyright 2025 Group 37</small>
         </div>
         <img src="../images/footer/mew.bmp" alt="Mew">
     </footer>
