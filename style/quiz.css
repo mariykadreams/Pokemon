@@ -1,5 +1,4 @@
 .quiz-box {
-    width: 90%;
     max-width: 500px;
     margin: 40px auto;
     text-align: center;
@@ -23,4 +22,12 @@
 .result {
     margin-top: 15px;
     font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .quiz-box {
+        max-width: none;
+        margin: 40px 0;
+        border-radius: 0;
+    }
 }

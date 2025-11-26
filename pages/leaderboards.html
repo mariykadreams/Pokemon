@@ -10,20 +10,24 @@
 </head>
 <body>
     <header class="navbar">
-        <nav>
-            <img src="../images/pokemon_logo.svg" alt="Logo" class="logo">
-
+        <button class="burger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <img src="../images/pokemon_logo.svg" alt="Logo" class="logo">
+        <nav id="site-menu">
             <a href="../index.html">Home</a>
             <a href="quiz.html">Quiz</a>
             <a href="game.html">Find</a>
-            <a href="leaderboards.html" class="active">Leaderboards</a>
+            <a href="leaderboards.html" class="active">Leaderboard</a>
             <a href="about.html">About</a>
             <a href="login.html">Login</a>
         </nav>
     </header>
 
     <section class="home-box">
-        <h1>Leaderboards</h1>
+        <h1>Leaderboard</h1>
         <div id="leaderboard-container">
             <table id="leaderboard-table">
                 <thead>
@@ -39,6 +43,7 @@
         </div>
     </section>
 
+    <script src="../scripts/nav.js"></script>
     <script src="../scripts/leaderboards.js"></script>
 </body>
 </html>
