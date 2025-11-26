@@ -31,3 +31,9 @@
         border-radius: 0;
     }
 }
+
+.home-box ul {
+    list-style: none;
+    padding-left: 0;   
+    margin-left: 0;
+}
