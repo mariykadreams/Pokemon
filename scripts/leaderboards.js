@@ -7,7 +7,7 @@ async function loadLeaderboard() {
         
         const users = await response.json()
         
-        const sortedUsers = users.sort((a, b) => (b.score || 0) - (a.score || 0))
+        const sortedUsers = users.sort((a, b) => (b.finding_game_score || 0) - (a.finding_game_score || 0))
         
         const tbody = document.getElementById('leaderboard-body')
         tbody.innerHTML = ''
@@ -17,7 +17,8 @@ async function loadLeaderboard() {
             row.innerHTML = `
                 <td>${index + 1}</td>
                 <td>${user.username}</td>
-                <td>${user.score || 0}</td>
+                <td>${user.finding_game_score || 0}</td>
+                <td>${user.quiz_score || 0}</td>
             `
             tbody.appendChild(row)
         })
