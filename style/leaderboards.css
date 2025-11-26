@@ -1,3 +1,7 @@
+.home-box {
+    min-width: calc(100vw / 2);
+}
+
 #leaderboard-container {
     margin-top: 20px;
     overflow-x: auto;

@@ -152,11 +152,11 @@ function setImageAttributes(img) {
 
 function generateRandomPosition() {
     let top = Math.floor(
-        Math.random() * (window.innerHeight - SAFE_MARGIN * 2 - IMG_SIZE)
-    ) + SAFE_MARGIN + 30
+        Math.random() * (window.innerHeight - SAFE_MARGIN * 3 - IMG_SIZE)
+    ) + SAFE_MARGIN * 1.5
     let left = Math.floor(
-        Math.random() * (window.innerWidth - SAFE_MARGIN * 2 - IMG_SIZE)
-    ) + SAFE_MARGIN
+        Math.random() * (window.innerWidth - IMG_SIZE - SAFE_MARGIN * 0.5)
+    ) + SAFE_MARGIN * 0.3
     return {
         top,
         left

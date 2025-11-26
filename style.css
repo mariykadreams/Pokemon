@@ -202,6 +202,10 @@ button {
     gap: 20px;
 }
 
+.site-footer div * {
+    text-align: center;
+}
+
 .site-footer img {
     width: 75px;
     height: auto;
