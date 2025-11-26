@@ -13,9 +13,9 @@ let quizState = {
 
 const quizQuestions = [
     { pokemon: 'Pikachu', silhouette: '../images/quiz/pikachu_who_0.png', image: '../images/quiz/pikachu_who_1.png', options: ['Pikachu', 'Raichu', 'Bulbasaur', 'Charmander'] },
-    { pokemon: 'Bulbasaur', silhouette: '../images/quiz/bulbasaur_who_0.jpg', image: '../images/quiz/bulbasaur_who_1.jpg', options: ['Squirtle', 'Bulbasaur', 'Ivysaur', 'Oddish'] },
-    { pokemon: 'Charmander', silhouette: '../images/quiz/charmander_who_0.jpg', image: '../images/quiz/charmander_who_1.jpg', options: ['Charmander', 'Charmeleon', 'Vulpix', 'Growlithe'] },
-    { pokemon: 'Psyduck', silhouette: '../images/quiz/psyduck_who_0.jpg', image: '../images/quiz/psyduck_who_1.jpg', options: ['Psyduck', 'Wartortle', 'Psyduck', 'Poliwag'] }
+    { pokemon: 'Bulbasaur', silhouette: '../images/quiz/bulbasaur_who_0.jpg', image: '../images/quiz/bulbasaur_who_1.jpg', options: ['Squirtle', 'Bulbasaur', 'Charmander', 'Oddish'] },
+    { pokemon: 'Charmander', silhouette: '../images/quiz/charmander_who_0.jpg', image: '../images/quiz/charmander_who_1.jpg', options: ['Charmander', 'Charmeleon', 'Psyduck', 'Growlithe'] },
+    { pokemon: 'Psyduck', silhouette: '../images/quiz/psyduck_who_0.jpg', image: '../images/quiz/psyduck_who_1.jpg', options: ['Psyduck', 'Wartortle', 'Pikachu', 'Poliwag'] }
 ];
 
 function startQuiz() {
@@ -91,7 +91,7 @@ function checkAnswer(selected, correct) {
     if (selected === correct) {
         resultDiv.textContent = 'Correct! 🎉';
         resultDiv.style.color = 'green';
-        quizState.score += 10;
+        quizState.score += 1;
         
         if (quizState.currentUsername) {
             quizState.score += 5;
