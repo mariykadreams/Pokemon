@@ -140,12 +140,24 @@ button {
     width: 26px;
     height: 3px;
     background: #777;
-    border-radius: 999px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.burger.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 .logo {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     vertical-align: middle;
 }
 

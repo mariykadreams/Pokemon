@@ -13,12 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeMenu() {
         nav.classList.remove('open')
+        burger.classList.remove('open')
         burger.setAttribute('aria-expanded', 'false')
         document.body.classList.remove('sidebar-open')
     }
 
     burger.addEventListener('click', function () {
         const isOpen = nav.classList.toggle('open')
+        burger.classList.toggle('open', isOpen)
         burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false')
 
         if (isOpen) {

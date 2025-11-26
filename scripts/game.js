@@ -10,7 +10,7 @@ const gameEnded = document.getElementById("game-ended")
 const finalScoreMessage = document.getElementById("final-score-message")
 const backToMenuButton = document.getElementById("back-to-menu-button")
 
-const GAME_DURATION = 20 * 1000 // milliseconds
+const GAME_DURATION = 30 * 1000 // milliseconds
 let startTime = null
 let score = 0
 const NUM_TRAINERS = 401
